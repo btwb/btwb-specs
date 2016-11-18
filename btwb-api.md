@@ -92,7 +92,7 @@ Access Key Token to verify that the credentials authenticate
 properly.
 
 HTTP METHOD: GET
-URI Template: `/api/gyms/{gym_id}/ping`
+URI Template: `/gyms/{gym_id}/ping`
 
 HTTP JSON Response:
 
@@ -126,7 +126,7 @@ their own Member with a BTWB Member. BTWB API will determine how to
 update the BTWB state based on the input and the currently known BTWB state.
 
 HTTP Method: POST
-Uri Template: `https://api.prod.btwb.com/api/gyms/{gym_id}/memberships`
+Uri Template: `https://api.prod.btwb.com/gyms/{gym_id}/memberships`
 Post Body Params:
 
     correlation_key - A unique identifier provided by the Application that
@@ -213,7 +213,7 @@ Kick Member from Gym
 --------------------
 
 HTTP Method: POST
-URI Template: `https://api.prod.btwb.com/api/gyms/{gym_id}/memberships/{correlation_key}/kick`
+URI Template: `https://api.prod.btwb.com/gyms/{gym_id}/memberships/{correlation_key}/kick`
 
 HTTP JSON Responses:
 
@@ -245,7 +245,7 @@ Unlink from Gym
 ---------------
 
 HTTP Method: DELETE
-URI Template: https://api.prod.btwb.com/api/gyms/{gym_id}/memberships/{correlation_key}
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/memberships/{correlation_key}
 
 This will delete the Gym Linked Membership for your Application's mapping between the
 GymId and the CorrelationKey. Attempting to Sync the member again may have unintended
@@ -288,7 +288,7 @@ List Gym Checkins
 -----------------
 
 HTTP Method: GET
-URI Template: https://api.prod.btwb.com/api/gyms/{gym_id}/checkins
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/checkins
 
 Query Params:
 
@@ -302,7 +302,7 @@ Checkin Member
 Creates a Checkin for a member.
 
 HTTP Method: POST
-URI Template: https://api.prod.btwb.com/api/gyms/{gym_id}/checkins
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/checkins
 
 Post Body Params:
 
@@ -329,7 +329,7 @@ Lookup Existing Checkin
 -----------------------
 
 HTTP Method: GET
-URI Template: https://api.prod.btwb.com/api/gyms/{gym_id}/checkins/{checkin_id}
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/checkins/{checkin_id}
 
 HTTP JSON Responses:
 
@@ -352,7 +352,7 @@ Delete Checkin
 Deletes a given checkin
 
 HTTP Method: DELETE
-URI Template: https://api.prod.btwb.com/api/gyms/{gym_id}/checkins/{checkin_id}
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/checkins/{checkin_id}
 
 Post Body Params:
 
