@@ -374,3 +374,81 @@ HTTP JSON Responses:
           ]
         }
 
+
+Coaching
+========
+
+List Programs
+-------------
+
+Returns a list of the Coaching Programs for the Authenticating
+Coaching Team.
+
+HTTP Method: GET
+URI Template: https://api.prod.btwb.com/coaching/programs
+
+Query Params:
+
+  * per_page - [default 100] How many checkins to list on GET
+  * page - [default 1] Pagination Offset.
+
+
+Get Program
+-----------
+
+Returns a the Coaching Program by id for the Authenticating
+Coaching Team.
+
+HTTP Method: GET
+URI Template: https://api.prod.btwb.com/coaching/programs/{id}
+
+URL Path Params:
+  * id - The coaching program id.
+
+List Subscriptions
+------------------
+
+Returns a list of active Coaching Programs Subscriptions for the
+Authenticating Coaching Team.
+
+This means any Gym or Member subscription for any program for
+the given Coaching Team whose ended_at is not set (or in the future).
+
+HTTP Method: GET
+URI Template: https://api.prod.btwb.com/coaching/subscriptions
+
+Query Params:
+  * email - [optional] Email address of subscriber.
+      If a found member is the Gym Subscription Owner in Btwb,
+      then we also return the Gym's Subscriptions. Otherwise,
+      It's just the list of subscriptions owned by the individual.
+  * per_page - [default 100] How many checkins to list on GET
+  * page - [default 1] Pagination Offset.
+
+Get Subscription
+----------------
+
+Lookup a subscription by id.
+
+HTTP Method: GET
+URI Template: https://api.prod.btwb.com/coaching/subscriptions/{id}
+
+URL Path Params:
+  * id - The subscription id.
+
+Cancel Subscription
+-------------------
+
+Ends the given subscription for the given Authenticating Coaching Team.
+
+HTTP Method: POST
+URI Template: https://api.prod.btwb.com/coaching/subscriptions/{id}/cancel
+
+Post Body Params:
+
+  * end_immediately - [optional] If set (ie, true or 1), then we will cancel
+      the given subscription with an immediate end date of NOW.
+      Otherwise, the subscription will end on the end of the current
+      billing cycle.
+
+
