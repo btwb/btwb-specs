@@ -405,6 +405,76 @@ URI Template: https://api.prod.btwb.com/coaching/programs/{id}
 URL Path Params:
   * id - The coaching program id.
 
+Create Subscription
+-------------------
+
+Subscribes either a Gym or a Member to a Coaching Program.
+This action is only available to Coaching Teams with a valid
+Api Access Key granted to partnered Api Applications.
+
+HTTP Method: POST
+Uri Template: `https://api.prod.btwb.com/coaching/subscriptions`
+
+Post Body Params:
+
+    coaching_program_id - [required] The id of the program.
+
+    subscriber_type - [required] "Gym" or "Member", this lets Btwb
+      know the type of subscription to create.
+
+    gym_id - [optional] Identifies the gym that is to be subscribed.
+      If this param is given, it will supercede `member_id` and `email`
+      params.
+
+    member_id - [optional] Identifies the Btwb member account to be
+      subscribed. If this param is given, it will supercede `email`
+      param matching.
+
+    email - [optional] Email address of the Member to sync. We
+      will first attempt to find the Btwb member account with the given
+      email. If not found, we will create a new member account
+      with the remaining member informational params.
+
+    gender - [optional] *Required* when a member with the given
+      email is not found, thus we will create a new member account.
+      `Male` or `Female` case sensitive.
+
+    first_name - [optional] To be created member's First Name.
+      Defaults to 'FName'
+
+    last_name - [optional] To be created member's Last Name.
+      Defaults to 'LName'
+
+    birthday - [optional] To be created member's dob in form of 'YYYY-MM-DD'.
+      Defaults to '1900-01-01'.
+
+    street - [optional] To be created member's street address.
+    city - [optional] To be created member's city.
+    state - [optional] To be created member's state.
+    postal_code - [optional] To be created member's postal code.
+    country - [optional] To be created member's country.
+
+HTTP JSON Responses:
+
+    200
+
+        {
+          "@type": "https://btwb.info/events/coaching/SubscriptionCreated",
+          "subscriber_url": "http://www.btwb.com/members/1",
+          "subscription": {
+            "id": 1,
+            "subscriber_id": 1,
+            "subscriber_type": "Gym",
+            "subscriber_name": "CrossFit Kinnick",
+            "subscriber_email": "support@crossfitkinnick.com",
+            "coaching_program_id": 1,
+            "coaching_program_plan_id": null,
+            "created_at": "2017-08-10T13:18:29.435-07:00",
+            "canceled_at": null,
+            "ended_at": null
+          }
+        }
+
 List Subscriptions
 ------------------
 
