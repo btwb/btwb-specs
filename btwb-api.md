@@ -375,6 +375,81 @@ HTTP JSON Responses:
         }
 
 
+Gym Tracks And Wods
+===================
+
+This allows the Application to look up a Gym's Tracks and list any
+specific track's TrackEvents.
+
+List Gym Tracks
+---------------
+
+Obtain the list of all the Gym's tracks.
+
+HTTP Method: GET
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/tracks
+
+Query Params:
+
+  NONE
+
+HTTP JSON Responses:
+
+    200
+
+        {
+          "tracks": [
+            {
+              "id": 1,
+              "name": "My Gym Track",
+              "open": true,
+              "created_at": "2016-06-10T11:45:43-04:00",
+              "updated_at": "2016-06-10T11:45:43-04:00"
+            }
+          ]
+        }
+
+List Gym Track Events
+---------------------
+
+Lists the Gym's planned track events for a given track, on
+a given date. The possible track events returned include
+Workouts, planned rest days and weigh ins.
+
+HTTP Method: GET
+URI Template: https://api.prod.btwb.com/gyms/{gym_id}/track_events
+
+Query Params:
+
+  * track_id - [required] The track id whose track events to look up.
+  * date - [default today] The YYYY-MM-DD date string to look up.
+
+HTTP JSON Responses:
+
+    200
+
+        {
+          "track_id": 1234,
+          "date": "2019-01-01",
+          "track_events": [...]
+        }
+
+    track_event objects:
+
+        {
+          "id": 9999,
+          "event_date": "2019-01-01",
+          "track_id": 1234,
+          "track_name": "My Main Track",
+          "task_type": "Workout",
+          "title": "Optionally Set Title for the Wod",
+          "notes": "Optionally Set Notes for the Wod",
+          "position": 1,
+          "section": "main",
+          "workout_name": "Fran",
+          "workout_description": "21-15-9 ..."
+        }
+
 Coaching
 ========
 
